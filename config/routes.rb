@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'events/register'
+
   root "hosts#index"
   
   resources :hosts, only: [:index, :show], :path => ''
