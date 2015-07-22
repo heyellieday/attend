@@ -3,7 +3,7 @@ class CreateHosts < ActiveRecord::Migration
     create_table :hosts do |t|
       t.string :title
       t.text :description
-      t.string, :address
+      t.string :address
       t.string :website
       t.text :events_url
 

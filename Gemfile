@@ -31,15 +31,36 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Use postgresql as the database for Active Record
+gem 'pg'
+# Use Redis for key value stores
+gem 'redis'
+# Use Figaro for Environment variables.
+gem 'figaro'
+# Use Friendly Id for human-readable slugs
+gem 'friendly_id', '~> 5.1.0'
+# Use Will Paginate for infinite scrolling
+gem 'will_paginate', '~> 3.0.6'
+# Use Puma for web server
+gem 'puma'
+# Use Meta Tags for easy meta tags
+gem 'meta-tags'
 
-		gem 'capybara'
-		gem 'poltergeist'
-		gem "mechanize"
-		gem "nokogiri"
-		gem 'json'
-		gem 'phantomjs', :require => 'phantomjs/poltergeist'
+gem 'capybara'
+gem 'poltergeist'
+gem "mechanize"
+gem "nokogiri"
+gem 'json'
+gem 'phantomjs', :require => 'phantomjs/poltergeist'
 
 group :development, :test do
+	gem 'rspec-rails', '~> 3.2.0'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem "letter_opener"
+
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

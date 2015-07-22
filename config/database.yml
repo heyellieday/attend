@@ -10,8 +10,10 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: attend
+  pool: 5
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,4 +24,4 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: db/production.postgres
