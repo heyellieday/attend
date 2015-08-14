@@ -1,2 +1,20 @@
-<h1>Hosts#show</h1>
-<p>Find me in app/views/hosts/show.html.erb</p>
+<div class="container">
+	<div class="row">
+	<h2><%= @host.title %></h2>
+	<%= simple_form_for @attendee, url: events_register_path do |f| %>
+
+	  <%= f.simple_fields_for :details do |d| %>
+	      <% @host.fields.try(:each) do |key, value| %>
+	      	<% if f.object.details[key].nil? %>
+	         	<%= d.input key, :input_html => {:value => value } %>
+	         <% else %>
+	         	<%= d.input key, :input_html => {:value => f.object.details[key] } %>
+	         <% end %>
+	      <% end %>
+	  <% end %>
+	  <%= f.input :event_ids, collection: @events, label_method: :date, value_method: :id, as: "check_boxes", label: "Upcoming Events" %>
+
+	  <%= f.button :submit, "RSVP to Selected Events" %>
+	<% end %>
+	</div>
+</div>

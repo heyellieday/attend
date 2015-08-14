@@ -1,2 +1,14 @@
-<h1>Hosts#index</h1>
-<p>Find me in app/views/hosts/index.html.erb</p>
+<div class="container">
+	<div class="row">
+	<h2>Hosts</h2>
+	<% @hosts.each do |host| %>
+	    <div class="panel panel-default panel-brand">
+	    	<div class="panel-body">
+		      <h3><%= host.title %></h3>
+		      <h5><a href="<%= host.website %>">Website</a> | <%= host.address %></h5>
+		     </div>
+		      <div class="panel-footer "><a href="<%= host_path(host) %>" class="">RSVP to Events</a></div>
+	    </div>
+	 <% end %>
+	</div>
+</div>

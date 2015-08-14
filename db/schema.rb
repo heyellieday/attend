@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722215923) do
+ActiveRecord::Schema.define(version: 20150814194435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "attendees", force: :cascade do |t|
+    t.hstore   "details",    default: {}, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.text     "url"
@@ -34,8 +41,16 @@ ActiveRecord::Schema.define(version: 20150722215923) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "slug"
+    t.hstore   "fields"
   end
 
   add_index "hosts", ["slug"], name: "index_hosts_on_slug", unique: true, using: :btree
+
+  create_table "registrations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "attendee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end

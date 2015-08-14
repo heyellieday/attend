@@ -55,6 +55,10 @@ gem "nokogiri"
 gem 'json'
 gem 'phantomjs', :require => 'phantomjs/poltergeist'
 
+gem 'bower-rails'
+
+gem 'simple_form'
+
 group :development, :test do
 	gem 'rspec-rails', '~> 3.2.0'
   gem 'factory_girl_rails'

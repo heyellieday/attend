@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
 	belongs_to :host
+	has_many :regisrations
 	scope :future, -> { where("date_time > ?", DateTime.now).order(date_time: :asc)}
 
 	def self.register(params)

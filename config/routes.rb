@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'registrations/new'
+
+  get 'registrations/create'
+
   get 'events/register'
 
   root "hosts#index"
