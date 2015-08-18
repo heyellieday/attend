@@ -6,7 +6,7 @@
 	  <%= f.simple_fields_for :details do |d| %>
 	      <% @host.fields.try(:each) do |key, value| %>
 	      	<% if f.object.details[key].nil? %>
-	         	<%= d.input key, :input_html => {:value => value } %>
+	         	<%= d.input key, :input_html => {:value => nil }, label: value %>
 	         <% else %>
 	         	<%= d.input key, :input_html => {:value => f.object.details[key] } %>
 	         <% end %>

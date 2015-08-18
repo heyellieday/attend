@@ -37,6 +37,30 @@ class Eventbrite
 		return events
 	end
 
+	def get_event_fields(path)
+		visit("https://eventbrite.com#{path}")
+
+		html_doc = Nokogiri::HTML(page.html)
+
+		click_link('Register')
+
+		fields = []
+
+		page.all(:xpath, '//input[@class="required"]').each do |el|
+			if el[:name].present?
+				if el[:name] == "passwd"
+
+				else
+					fields.push(el[:name])
+				end
+			else
+
+			end
+		end
+
+		fields
+	end
+
 	def register(path, params)
 		visit("https://eventbrite.com#{path}")
 
@@ -44,12 +68,20 @@ class Eventbrite
 
 		click_link('Register')
 
-		fill_in 'first_name', :with => params[:first_name]
-		fill_in 'last_name', :with => params[:last_name]
-		fill_in 'email_address', :with => params[:email_address]
-		fill_in 'confirm_email_address', :with => params[:confirm_email_address]
-		fill_in 'attendee_1_first_name', :with => params[:first_name]
-		fill_in 'attendee_1_last_name', :with => params[:last_name]
+		page.all(:xpath, '//input[@class="required"]').each do |el|
+			if el[:name] == "passwd"
+		   fill_in el[:name], :with => "FakePassword"
+		  else
+		  	fill_in el[:name], :with => params[el[:name]]
+		  end
+		end
+
+		# fill_in 'first_name', :with => params[:first_name]
+		# fill_in 'last_name', :with => params[:last_name]
+		# fill_in 'email_address', :with => params[:email_address]
+		# fill_in 'confirm_email_address', :with => params[:confirm_email_address]
+		# fill_in 'attendee_1_first_name', :with => params[:first_name]
+		# fill_in 'attendee_1_last_name', :with => params[:last_name]
 
 		click_link('Complete Registration')
 

@@ -17,5 +17,14 @@ class Host < ActiveRecord::Base
 		end
 		events
 
+		fields_hash = {}
+
+		fields_array = eventbrite.get_event_fields(events[0][:url])
+		fields_array.each do |field|
+			fields_hash[field] = field.titleize
+		end
+		update_attributes(fields: fields_hash)
+		
+
 	end
 end

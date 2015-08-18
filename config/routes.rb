@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'registrations/create'
 
-  get 'events/register'
+  post 'events/register'
 
   root "hosts#index"
   

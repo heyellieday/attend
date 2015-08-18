@@ -1,13 +1,12 @@
 class EventsController < ApplicationController
   def register
-
-  	@response = Event.register(attendee_params)
+  	@response = Event.register(params[:attendee][:details], params[:attendee][:event_ids])
 
   	render json: @response
 
   end
   protected
   	def attendee_params
-  		params.require(:attendee).permit(:first_name, :last_name, :email_address, :confirm_email_address, event_ids: [])
+  		params.require(:attendee).permit(details: {}, event_ids: [])
   	end
 end
