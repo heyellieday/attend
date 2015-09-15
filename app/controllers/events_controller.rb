@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
   def register
-  	@response = Event.register(params[:attendee][:details], params[:attendee][:event_ids])
-
-  	render json: @response
-
+  	EventWorker.mass_register(params[:attendee][:details], params[:attendee][:event_ids])
   end
   protected
   	def attendee_params
