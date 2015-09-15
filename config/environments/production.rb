@@ -48,6 +48,25 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
+  if ENV['force_ssl'] == 'true'
+    config.force_ssl = true
+  else
+    config.force_ssl = false
+  end
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {:host => ENV['default_mailer_url']}
+  config.action_mailer.perform_deliveries = true  
+  config.action_mailer.raise_delivery_errors = true  
+  config.action_mailer.smtp_settings = {  
+       :authentication => :plain,
+       :address => "smtp.mailgun.org",
+       :port => 587,
+       :domain => ENV["mailgun_domain"],
+       :user_name => ENV["mailgun_username"],
+       :password => ENV["mailgun_password"]
+  }
+
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 

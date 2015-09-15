@@ -46,7 +46,8 @@ class Eventbrite
 
 		fields = []
 
-		page.all(:xpath, '//input[@class="required"]').each do |el|
+		page.all(:xpath, "//input[contains(@class, 'required')]").each do |el|
+			puts el[:name]
 			if el[:name].present?
 				if el[:name] == "passwd"
 
@@ -68,7 +69,7 @@ class Eventbrite
 
 		click_link('Register')
 
-		page.all(:xpath, '//input[@class="required"]').each do |el|
+		page.all(:xpath, "//input[contains(@class, 'required')]").each do |el|
 			if el[:name] == "passwd"
 		   fill_in el[:name], :with => "FakePassword"
 		  else

@@ -6,11 +6,12 @@ class Event < ActiveRecord::Base
 	def self.register(params, event_ids)
 		eventbrite = Eventbrite.new
 		event_ids.each do |id|
-			event = Event.find(id)
-			puts event
-			response = eventbrite.register(event.url, params)
-			unless response
-				return response
+			unless id.nil?
+				event = Event.find(id)
+				response = eventbrite.register(event.url, params)
+				unless response
+					return response
+				end
 			end
 		end
 	end

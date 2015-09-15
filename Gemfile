@@ -59,6 +59,9 @@ gem 'bower-rails'
 
 gem 'simple_form'
 
+# Use sidekiq for background job processing
+gem 'sidekiq'
+
 group :development, :test do
 	gem 'rspec-rails', '~> 3.2.0'
   gem 'factory_girl_rails'
