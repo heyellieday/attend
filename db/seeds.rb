@@ -15,3 +15,5 @@ host= Host.create(
 )
 
 host.find_or_create_events
+
+
