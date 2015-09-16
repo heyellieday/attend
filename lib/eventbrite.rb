@@ -16,6 +16,7 @@ class Eventbrite
 	    Capybara::Poltergeist::Driver.new(app, {js_errors: false, :phantomjs => Phantomjs.path})
 	end
 
+
 	def get_events(url)
 		visit(url)
 
