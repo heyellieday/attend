@@ -57,6 +57,8 @@ gem 'bower-rails'
 
 gem 'simple_form'
 
+gem 'rails_12factor', group: :production
+
 # Use sidekiq for background job processing
 gem 'sidekiq'
 
