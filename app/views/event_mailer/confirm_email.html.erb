@@ -1,0 +1,6 @@
+<p>Please confirm your email <a href="<%= confirm_email_url(confirm_token: @attendee.confirm_token) %>">here</a> to complete registration to the following events hosted by <%= @host.title %>: </p>
+<ul>
+<% @events.each do |event| %>
+	<li><%= event.date %></li>
+<%end%>
+</ul>

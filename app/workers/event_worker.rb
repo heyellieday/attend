@@ -1,9 +1,10 @@
 class EventWorker
   include Sidekiq::Worker
 
-  def mass_register(details, event_ids)
+  def perform(details, event_id)
   	Sidekiq.redis do |conn|
-	    Event.register(details, event_ids)
+  		event = Event.find(event_id)
+	    event.register(details)
 		end
   end
 end

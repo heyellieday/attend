@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+	<h2>Your email has been confirmed!</h2>
+	<% if @events.length > 0 %>
+	<p>If all goes well with scraping Eventbrite, you will soon be getting emails for the following events:</p>
+	<ul>
+	<% @events.each do |event| %>
+		<li><%= event.date %></li>
+	<%end%>
+	</ul>
+	<% end %>
+	</div>
+</div>

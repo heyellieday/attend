@@ -3,16 +3,11 @@ class Event < ActiveRecord::Base
 	has_many :regisrations
 	scope :future, -> { where("date_time > ?", DateTime.now.tomorrow).order(date_time: :asc)}
 
-	def self.register(params, event_ids)
+	def register(details)
 		eventbrite = Eventbrite.new
-		event_ids.each do |id|
-			unless id.nil?
-				event = Event.find(id)
-				response = eventbrite.register(event.url, params)
-				unless response
-					return response
-				end
-			end
+		response = eventbrite.register(url, details)
+		unless response
+			return response
 		end
 	end
 end

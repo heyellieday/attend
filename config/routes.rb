@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  get 'attendees/confirm_email'
 
-  get 'registrations/new'
-
-  get 'registrations/create'
+  get 'attendees/confirm_email?confirm_token=:confirm_token' => 'attendees#confirm_email', as: :confirm_email
 
   post 'events/register'
 

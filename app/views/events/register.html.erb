@@ -1,2 +1,6 @@
-<h1>Events#register</h1>
-<p>Find me in app/views/events/register.html.erb</p>
+<p>Please click on the link in the confirmation email address that is being sent to complete registration to the following events hosted by <%= @host.title %>: </p>
+<ul>
+<% @events.each do |event| %>
+	<li><%= event.date %></li>
+<%end%>
+</ul>
